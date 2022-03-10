@@ -1,15 +1,24 @@
 <h1>March of the <strong>Mammoths</strong></h1>
 
 <ul>
-{{#each this.library as |book|}}
-    <li>{{book.title}}  <Input @type="number" min="0" @value={{book.progress}} />/{{book.pages}} <button {{on 'click' this.saveData}}>save</button></li>
-{{/each}}
+  {{#each this.library as |book|}}
+    <li><i>{{book.title}}</i>,
+      <label>pages
+        <Input @type='number' min='0' @value={{book.progress}} /></label>
+      /{{book.pages}}
+      <button type='button' {{on 'click' this.saveData}}>save</button>
+      {{#if this.showStats}}(pace:
+        {{this.calculatePace book.pages book.progress}}
+        ppd){{/if}}</li>
+  {{/each}}
 </ul>
 
-<form {{on "submit" this.addBook}}>
-    <label for="book-title">Title: </label>
-    <input type="text" id="book-title">
-    <label for="book-pages">Pages:</label>
-    <input type="number" id="book-pages">
-    <button type="submit">Add</button>
+<button type='button' {{on 'click' this.toggleStats}}>Show stats</button>
+
+<form {{on 'submit' this.addBook}}>
+  <label for='book-title'>Title: </label>
+  <input type='text' id='book-title' />
+  <label for='book-pages'>Pages:</label>
+  <input type='number' id='book-pages' />
+  <button type='submit'>Add</button>
 </form>

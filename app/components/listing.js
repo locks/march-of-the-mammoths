@@ -5,6 +5,7 @@ import { localStorageKey } from '../utils/constants';
 
 export default class ListingComponent extends Component {
   @tracked books = [];
+  @tracked showStats = false;
 
   get library() {
     return [...this.args.books, ...this.books];
@@ -22,6 +23,19 @@ export default class ListingComponent extends Component {
     this.saveData();
 
     event.target.reset();
+  }
+
+  @action
+  toggleStats() {
+    this.showStats = !this.showStats;
+  }
+
+  @action
+  calculatePace(pages, progress) {
+    let daysLeft = 31 - new Date().getDate();
+    let pagesLeft = pages - progress;
+
+    return (pagesLeft / daysLeft).toFixed(0);
   }
 
   @action

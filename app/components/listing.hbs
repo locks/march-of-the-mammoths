@@ -1,4 +1,4 @@
-<h1>March of the <strong>Mammoths</strong></h1>
+<h1>March of the <strong>Mammoths</strong> 🦣</h1>
 
 <ul>
   {{#each this.library as |book|}}
@@ -6,19 +6,20 @@
       <label>pages
         <Input @type='number' min='0' @value={{book.progress}} /></label>
       /{{book.pages}}
-      <button type='button' {{on 'click' this.saveData}}>save</button>
+      <button type='button' {{on 'click' this.saveData}}>💾 Save</button>
       {{#if this.showStats}}(pace:
         {{this.calculatePace book.pages book.progress}}
         ppd){{/if}}</li>
   {{/each}}
 </ul>
 
-<button type='button' {{on 'click' this.toggleStats}}>Show stats</button>
+<Inputtoggle @toggle={{this.toggleStats}}/>
 
 <form {{on 'submit' this.addBook}}>
+  <h2>Add a new book 📖</h2>
   <label for='book-title'>Title: </label>
   <input type='text' id='book-title' />
   <label for='book-pages'>Pages:</label>
   <input type='number' id='book-pages' />
-  <button type='submit'>Add</button>
+  <button type='submit'>➕ Add</button>
 </form>

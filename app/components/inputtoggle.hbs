@@ -1,0 +1,9 @@
+<label class="toggle-container" for="stats">
+  <span>Hide stats</span>
+  <div class="switch">
+      <div class="bar"></div>
+      <div class="circle {{if this.stats "right" "left"}} {{if this.focused "focused" ""}}"></div>
+  </div>
+  <input type="checkbox" id="stats" name="stats" value="stats" checked={{this.stats}} {{on 'click' this.toggle}} {{on 'focusin' this.handleFocusIn}}
+  {{on 'focusout' this.handleFocusOut}}>Show stats
+</label>

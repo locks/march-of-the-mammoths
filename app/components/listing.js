@@ -26,8 +26,8 @@ export default class ListingComponent extends Component {
   }
 
   @action
-  toggleStats() {
-    this.showStats = !this.showStats;
+  toggleStats(val) {
+    this.showStats = val;
   }
 
   @action
